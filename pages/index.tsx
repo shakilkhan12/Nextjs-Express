@@ -21,6 +21,7 @@ interface Posts {
 const Home: NextPage<Posts> = ({posts}) => {
   // const {posts} = props;
   console.log(posts)
+  console.log(process.env.NEXT_PUBLIC_BASE_URL)
   return (
     <div className={styles.container}>
       <Head>
@@ -30,7 +31,7 @@ const Home: NextPage<Posts> = ({posts}) => {
       </Head>
 
     <div>
-      helo
+      <h1 className='text-2xl text-rose-500'>Hello nextjs with typescript</h1>
     </div>
     </div>
   )
@@ -47,3 +48,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 export default Home
+// https://youtu.be/wc-5_h6iMn8?list=PLMhAeHCz8S38HfrRtzfzFD5NTbjgQxcpD&t=2122
