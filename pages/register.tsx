@@ -42,7 +42,7 @@ const Register: NextPage = () => {
           return;
         }
         try {
-          const { data } = await axios.post('/auth/register', state);
+          const { data } = await axios.post('https://node-api-for-next.herokuapp.com/api/auth/register', state);
           console.log(data)
           setLoading(false)
           router.push('/login')
