@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .button {
+        @apply text-sm inline-block font-bold text-center capitalize rounded-3xl border;
+    }
+    .button.green {
+        @apply bg-emerald-600 border-emerald-600 text-white hover:bg-emerald-700 hover:border-emerald-700 transition duration-500;
+    }
+    .button.green.hollow {
+        @apply bg-transparent border-emerald-600 text-emerald-600 hover:bg-emerald-50 transition duration-500 
+    }
+}

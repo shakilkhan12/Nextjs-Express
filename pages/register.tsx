@@ -42,14 +42,18 @@ const Register: NextPage = () => {
           return;
         }
         try {
-          const { data } = await axios.post('https://node-api-for-next.herokuapp.com/api/auth/register', state);
+          const { data } = await axios.post('/auth/register', state);
           console.log(data)
           setLoading(false)
           router.push('/login')
         } catch (error: any) {
           setLoading(false)
           console.log(error)
-          setErrors(error?.response?.data)
+          // if(error.message) {
+          //   setErrors({message: error.message})
+          //   return;
+          // }
+          setErrors(error?.response?.data ? error.response.data : {})
         }
   }
   console.log(errors)
@@ -61,8 +65,7 @@ const Register: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-    <div className='flex overflow-hidden relative'>
-      <div className='absolute -top-[5%] -right-[10%] w-[600px] h-[600px] border-[100px] border-amber-50 rounded-full -z-10 border-l-gray-50'></div>
+    <div className='flex overflow-hidden relative bg-white'>
       <div className='sm:w-36 w-0 h-screen bg-[url(/images/bg.jpg)] bg-full bg-no-repeat bg-cover bg-center'></div>
       <div className='flex flex-col justify-center px-6 w-full sm:w-10/12 md:w-7/12 lg:w-5/12 xl:w-3/12 '>
         <h1 className='text-lg font-medium capitalize mb-2'>sign up</h1>
@@ -73,15 +76,16 @@ const Register: NextPage = () => {
         </div>
         <form className='w-full' onSubmit={submitForm}>
           
-        <InputGroup classNames="mb-3" type='email' placeholder='email...' value={state.email} onChange={onChange} error={errors.email} name="email" />
-            <InputGroup classNames="mb-3" type='text' placeholder='username...' value={state.username} onChange={onChange} error={errors.username} name="username" />
-            <InputGroup classNames="mb-3" type='password' placeholder='password...' value={state.password} onChange={onChange} error={errors.password} name="password" />
+        <InputGroup classNames="mb-3" type='email' placeholder='email...' value={state.email} onChange={onChange} error={errors?.email} name="email" />
+            <InputGroup classNames="mb-3" type='text' placeholder='username...' value={state.username} onChange={onChange} error={errors?.username} name="username" />
+            <InputGroup classNames="mb-3" type='password' placeholder='password...' value={state.password} onChange={onChange} error={errors?.password} name="password" />
             <div className='mb-3'>
             <button className="block w-full rounded uppercase font-medium bg-emerald-600 text-white py-3 px-2.5 hover:bg-emerald-800 transition duration-700 cursor-pointer disabled:bg-emerald-400 disabled:cursor-not-allowed text-center" disabled={loading ? true : false}>
               {loading ? <span className='block w-[15px] h-[15px] rounded-full border-2 border-white border-r-transparent m-auto animate-spin'></span> : `sign up`}
             </button>
             </div>
-            <span className='block text-rose-600 text-[13px] font-medium mb-2'>{errors.agreement}</span>
+            <span className='block text-rose-600 text-[13px] font-medium mb-2'>{errors?.agreement}</span>
+            <span className='block text-rose-600 text-[13px] font-medium mb-2'>{errors?.message}</span>
         </form>
         <small className='text-sm'>
           Already a redditor?

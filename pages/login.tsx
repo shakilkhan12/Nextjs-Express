@@ -51,16 +51,15 @@ const Login: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-    <div className='flex overflow-hidden relative'>
-      <div className='absolute -top-[5%] -right-[10%] w-[600px] h-[600px] border-[100px] border-amber-50 rounded-full -z-10 border-l-gray-50'></div>
+    <div className='flex overflow-hidden relative bg-white'>
       <div className='sm:w-36 w-0 h-screen bg-[url(/images/bg.jpg)] bg-full bg-no-repeat bg-cover bg-center'></div>
       <div className='flex flex-col justify-center px-6 w-full sm:w-10/12 md:w-7/12 lg:w-5/12 xl:w-3/12 '>
         <h1 className='text-lg font-medium capitalize mb-2'>log in</h1>
         <p className='mb-10 text-sm'>By continuing, you are setting up a Reddit account and agree to our User Agreement and Privacy Policy.</p>
         <form className='w-full' onSubmit={submitForm}>
           
-            <InputGroup classNames="mb-3" type='text' placeholder='username...' value={state.username} onChange={onChange} error={errors.username} name="username" />
-            <InputGroup classNames="mb-3" type='password' placeholder='password...' value={state.password} onChange={onChange} error={errors.password} name="password" />
+            <InputGroup classNames="mb-3" type='text' placeholder='username...' value={state.username} onChange={onChange} error={errors?.username} name="username" />
+            <InputGroup classNames="mb-3" type='password' placeholder='password...' value={state.password} onChange={onChange} error={errors?.password} name="password" />
             <div className='mb-3'>
             <button className="block w-full rounded uppercase font-medium bg-emerald-600 text-white py-3 px-2.5 hover:bg-emerald-800 transition duration-700 cursor-pointer disabled:bg-emerald-400 disabled:cursor-not-allowed text-center" disabled={loading ? true : false}>
               {loading ? <span className='block w-[15px] h-[15px] rounded-full border-2 border-white border-r-transparent m-auto animate-spin'></span> : `log in`}
