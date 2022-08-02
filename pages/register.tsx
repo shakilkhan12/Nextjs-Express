@@ -42,7 +42,11 @@ const Register: NextPage = () => {
           return;
         }
         try {
-          const { data } = await axios.post('/auth/register', state);
+          const { data } = await axios.post('/auth/register', state, {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+            }
+          });
           console.log(data)
           setLoading(false)
           router.push('/login')
