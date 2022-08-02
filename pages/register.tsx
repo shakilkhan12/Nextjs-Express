@@ -44,7 +44,7 @@ const Register: NextPage = () => {
         try {
           const { data } = await axios.post('/auth/register', state, {
             headers: {
-              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Origin': '*'
             }
           });
           console.log(data)
