@@ -47,8 +47,7 @@ const Login: NextPage = () => {
     <div>
       <Head>
         <title>sign in</title>
-        <meta name="description" content="login page" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Sign In" />
       </Head>
 
     <div className='flex overflow-hidden relative bg-white'>

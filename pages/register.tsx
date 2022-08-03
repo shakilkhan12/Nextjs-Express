@@ -60,9 +60,8 @@ const Register: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Register</title>
-        <meta name="description" content="register page" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Sign Up</title>
+        <meta name="description" content="Sign up page" />
       </Head>
 
     <div className='flex overflow-hidden relative bg-white'>
