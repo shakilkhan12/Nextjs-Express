@@ -46,7 +46,7 @@ const Login: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Sign I</title>
+        <title>Sign In</title>
         <meta name="description" content="Sign in page" />
       </Head>
 
