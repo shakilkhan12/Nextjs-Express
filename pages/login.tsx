@@ -46,8 +46,8 @@ const Login: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>sign in</title>
-        <meta name="description" content="Sign In" />
+        <title>Sign I</title>
+        <meta name="description" content="Sign in page" />
       </Head>
 
     <div className='flex overflow-hidden relative bg-white'>
