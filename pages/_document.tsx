@@ -31,6 +31,7 @@ class MyDocument extends Document {
         <body className='bg-gray-100'>
           <Main />
           <NextScript />
+          {process.env.NEXT_PUBLIC_STATUS === 'dev' ? <div className='fixed bottom-6 right-4 bg-emerald-500 p-3 rounded text-white capitalize font-medium'>Under development</div> : ''}
         </body>
       </Html>
     )
