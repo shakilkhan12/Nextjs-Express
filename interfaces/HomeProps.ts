@@ -6,11 +6,12 @@ export interface HomeProps {
       title: string;
       slug: string;
       body: string;
-      subName: string;
-      user: string;
-      userDetails: {
+      sub: {
+        name: string;
+      };
+      user: {
         username: string;
-      },
+      }
       createdAt: string;
       updatedAt: string;
     }[]
