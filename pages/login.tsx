@@ -1,11 +1,13 @@
 import type { NextPage,GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from "next/link"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from "axios"
 import className from "classnames"
 import { useRouter } from 'next/router'
 import InputGroup from '../components/InputGroup'
+import { useSession } from '../context/AuthProvider'
+import Public from '../components/Public'
 type StateType = {
   password: string,
   username: string,
@@ -15,6 +17,8 @@ type ErrorsType = {
 }
 
 const Login: NextPage = () => {
+  const { auth,setAuth, loading: isLoading } = useSession();
+  console.log('isLoading', isLoading)
   const [state, setState] = useState<StateType>({
     username: '',
     password: ''
@@ -35,6 +39,7 @@ const Login: NextPage = () => {
           const { data } = await axios.post('/auth/login', state);
           console.log(data)
           setLoading(false)
+          setAuth({auth: true, user: data.user})
           router.push('/')
         } catch (error: any) {
           console.log(error)
@@ -42,14 +47,17 @@ const Login: NextPage = () => {
           setErrors(error?.response?.data)
         }
   }
-  console.log(errors)
+  isLoading && <h1>Loading</h1>
+  useEffect(() => {
+    
+  }, [auth])
+  
   return (
     <div>
       <Head>
         <title>Sign In</title>
         <meta name="description" content="Sign in page" />
       </Head>
-
     <div className='flex overflow-hidden relative bg-white'>
       <div className='sm:w-36 w-0 h-screen bg-[url(/images/bg.jpg)] bg-full bg-no-repeat bg-cover bg-center'></div>
       <div className='flex flex-col justify-center px-6 w-full sm:w-10/12 md:w-7/12 lg:w-5/12 xl:w-3/12 '>
@@ -78,4 +86,4 @@ const Login: NextPage = () => {
 }
 
 
-export default Login;
+export default Public(Login);

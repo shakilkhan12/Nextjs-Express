@@ -11,8 +11,17 @@ export interface HomeProps {
       };
       user: {
         username: string;
-      }
+      },
+      votes: {
+        _id: string;
+        createdAt: string;
+        updatedAt: string;
+        postsId: string;
+        username: string;
+        value: number;
+      }[],
       createdAt: string;
       updatedAt: string;
-    }[]
+    }[],
+    token: string;
     }
