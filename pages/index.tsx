@@ -20,19 +20,9 @@ import Auth from '../components/Auth'
 dayjs.extend(relativeTime)
 const Home: NextPage<HomeProps>= ({posts, token}) => {
   
-  const {setToken, token: t, setUser, setLoading} = useContext(AuthContext)
+  const {  setLoading} = useContext(AuthContext)
     const verify = verifyToken(token)
-  useEffect(() => {
-    setLoading(true);
-    async function verifyCheck() {
-    if(verify){
-      setToken(verify.token)
-      setUser(verify.decoded)
-      setLoading(false)
-    }
-    }
-    verifyCheck();
-  }, [token])
+  
 
   return (
     <>

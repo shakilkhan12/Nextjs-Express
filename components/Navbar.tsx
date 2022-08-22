@@ -5,21 +5,19 @@ import { useContext } from 'react'
 import { useRouter } from 'next/router'
 import { FiSearch } from "react-icons/fi"
 import AuthContext, { useSession } from '../context/AuthProvider'
-import { spawn } from 'child_process'
 const Navbar: React.FC = () => {
-  const {auth, token, setToken, setUser, loading} = useSession();
+  const {auth,setAuth, loading} = useSession();
   const router = useRouter();
   const logout = async () => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${auth.token}`,
       },
     };
       try {
         await axios.get('/auth/logout', config)
-        setToken(null)
-        setUser(null)
+        setAuth({auth: false, user: null, token: null})
         router.push('/login')
       } catch (error) {
         console.log(error)

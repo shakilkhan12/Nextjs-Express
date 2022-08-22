@@ -6,15 +6,13 @@ interface Props {
   }
 export const AuthContext = createContext({
     token: null,
-    user: null,
+    auth: {},
     loading: false
 } as any);
 
 export const AuthProvider = ({ children }: Props) => {
-    const [token, setToken] = useState<string|null>(null);
-    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState<boolean>(true)
-    const [auth, setAuth] = useState({auth: false, user: null});
+    const [auth, setAuth] = useState({auth: false, user: null, token: null});
     useEffect(() => {
        async function getUser() {
         setLoading(true)
@@ -32,7 +30,7 @@ export const AuthProvider = ({ children }: Props) => {
     },[])
 
     return (
-        <AuthContext.Provider value={{ token,auth,setAuth, setToken,setUser, loading, setLoading, user }}>
+        <AuthContext.Provider value={{ auth,setAuth, loading, setLoading }}>
             {children}
         </AuthContext.Provider>
     )
